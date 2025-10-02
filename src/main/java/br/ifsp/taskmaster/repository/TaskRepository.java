@@ -1,0 +1,13 @@
+package br.ifsp.taskmaster.repository;
+
+import org.springframework.data.domain.Page;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.domain.Pageable;
+
+import br.ifsp.taskmaster.model.Task;
+
+public interface TaskRepository extends JpaRepository<Task, Long> {
+    Page<Task> findByCategoria(String categoria, Pageable pageable);
+}
