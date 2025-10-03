@@ -9,5 +9,5 @@ import org.springframework.data.domain.Pageable;
 import br.ifsp.taskmaster.model.Task;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    Page<Task> findByCategoria(String categoria, Pageable pageable);
+    Page<Task> findByCategoriaIgnoreCase(String categoria, Pageable pageable);
 }

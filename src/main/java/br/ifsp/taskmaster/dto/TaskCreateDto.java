@@ -2,6 +2,7 @@ package br.ifsp.taskmaster.dto;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,6 +26,7 @@ public class TaskCreateDto {
     @NotBlank(message = "A categoria é obrigatória")
     String categoria;
 
+    @FutureOrPresent(message = "A data limite não pode estar no passado.")
     @NotNull(message = "A data limite é obrigatória")
     LocalDate dataLimite;
 

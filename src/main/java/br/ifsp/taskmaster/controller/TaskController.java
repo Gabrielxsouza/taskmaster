@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -59,21 +59,21 @@ public class TaskController {
         return taskService.getAllTasks(pageable);
     }
 
-    @Operation(summary = "atualizar uma task")
-    @PatchMapping("/{id}")
+    @Operation(summary = "Atualizar uma task por id")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TaskUpdateDto updateTask(@PathVariable long id,@Valid @RequestBody TaskUpdateDto taskUpdateDto) {
         return taskService.updateTask(id, taskUpdateDto);
     }
 
-    @Operation(summary = "deletar uma task")
+    @Operation(summary = "Deletar uma task por id")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(@PathVariable long id) {
         taskService.deleteTask(id);
     }
 
-    @Operation(summary = "buscar uma task por categoria")
+    @Operation(summary = "Buscar uma task por categoria")
     @GetMapping("/{categoria}")
     @ResponseStatus(HttpStatus.OK)
     public Page<TaskDto> getTaskByCategoria(@PathVariable String categoria) {
